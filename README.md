@@ -1,2 +1,2 @@
-# cpp
-cpp codes are going to be available in this directory
+# mpi4py
+In this directory there are examples of mpi4py scripts.
