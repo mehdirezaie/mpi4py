@@ -7,7 +7,7 @@ import time
 
 def f(x):
     return 4.0/(1.0+x*x)
-    
+
 def trap(local_a,local_b,local_n,h):
     estimate = (f(local_a)+f(local_b))/2.0
     for i in xrange(1,local_n):
