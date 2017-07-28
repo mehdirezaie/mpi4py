@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
-# python pi_mpi.py
-# mpirun -np 5 python pi_mpi.py
+# python pi_simple.py
+
 
 import time
 
