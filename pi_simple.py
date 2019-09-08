@@ -1,16 +1,18 @@
-#!/usr/bin/env python
+'''
+    Pi with a trapzoidal method
+    no MPI
 
-# python pi_simple.py
-
-
-import time
+    (c) Mehdi Rezaie
+'''
+from time import time
+import numpy as np
 
 def f(x):
     return 4.0/(1.0+x*x)
 
 def trap(local_a,local_b,local_n,h):
     estimate = (f(local_a)+f(local_b))/2.0
-    for i in xrange(1,local_n):
+    for i in np.arange(1,local_n):
         x = local_a+float(i)*h
         estimate += f(x)
     #
@@ -18,12 +20,12 @@ def trap(local_a,local_b,local_n,h):
     return estimate
 
 
-start = time.time()
+start = time()
 
 b = 1.0
 a = 0.0
-n = 100000000
+n = 10000000
 h = (b-a)/float(n)
 total_int = trap(a,b,n,h)
-end = time.time()
-print "Pi with %d steps is %f in %f secs" %(n, total_int, end-start)
+end = time()
+print("Pi with %d steps is %f in %f secs" %(n, total_int, end-start))

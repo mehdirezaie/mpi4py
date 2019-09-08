@@ -1,10 +1,12 @@
-#!/usr/bin/env python
+'''
+    example of point to point
+    (c) Mehdi Rezaie
 
-#	example of point to point
-#   last edit: April 23
+    run with : 
+    mpirun --oversubscribe -np 3 python p2p.py 
+'''
 
-
-import numpy
+import numpy as np
 from mpi4py import MPI
 
 comm = MPI.COMM_WORLD
@@ -13,13 +15,13 @@ size = comm.Get_size()
 
 
 if rank == 0:
-   data = numpy.arange(10)
+   data = np.arange(10)
    comm.send(data[:5], dest=1, tag=13)
    comm.send(data[5:], dest=2, tag=14)
-   print "Rank %d data is: "%rank, data
+   print("Rank %d has : "%rank, data)
 elif rank == 1:
    data = comm.recv(source=0, tag=13)
-   print "Rank %d Message Received, data is: "%rank, data
+   print("Rank %d Message Received, data is: "%rank, data)
 elif rank == 2:
    data = comm.recv(source=0, tag=14)
-   print "Rank %d Message Received, data is: "%rank, data
+   print("Rank %d Message Received, data is: "%rank, data)
