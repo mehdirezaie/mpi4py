@@ -11,7 +11,7 @@ comm = MPI.COMM_WORLD
 rank = comm.Get_rank()
 size = comm.Get_size()
 
-assert size>3, "this example requires at least 3 processes"
+assert size>=3, "this example requires at least 3 processes"
 
 if rank==0:
     data = {'survey':'desi', 'year':2021}

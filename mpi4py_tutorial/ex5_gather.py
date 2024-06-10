@@ -19,7 +19,7 @@ data = comm.gather(data, root=0)
 
 if rank==0:
     for i in range(size):
-        assert data[i] = [i, i*i]
+        assert data[i] == [i, i*i]
 else:
     assert data is None
 
